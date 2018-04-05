@@ -1,0 +1,78 @@
+body, html {
+    height: 100%;
+}
+
+/* The hero image */
+.hero-image {
+    /* The image used */
+    background-image: url("../img/hero.jpg");
+
+    /* Set a specific height */
+    height: 100%;
+
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+    text-align: center;
+    margin: 2em;
+    top: 50%;
+    left: 50%;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #6fb0e6;
+}
+
+.zeroMargin{
+    margin:0;
+}
+#imgResize {
+    width: 10em;
+}
+
+.container {
+    padding-bottom: 5em;
+    padding-top: 3em;
+}
+
+.content {
+    margin-bottom: 4em;
+}
+
+.row {
+    text-align: center;
+}
+
+h2 {
+    background-color: white;
+}
+.outline {
+    border-radius: 1em;
+}
+
+.list-group-item {
+    cursor: pointer;
+}
+
+.list-group-item:hover {
+    color: #fff;
+    background-color: #FFFFFF;
+    border-color: #007bff;
+}
+
+.material-icons {
+    font-size: 50px;
+    color: green;
+    
+}
+
+li {
+    border-bottom: 1px solid black;
+}
+
+
