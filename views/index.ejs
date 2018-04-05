@@ -10,11 +10,14 @@
 
 <div class="container">
 	<div class="row">
+
+
 		<div class="col-md-4"><h2>NodeJS</h2>
 	  		<div class="content ">
 	  			<ul class="list-group">
-	  				<%for(var i = 0; i < posts.length; i++) { %>	
-		  				<div>
+	  				<%if(posts.Category == 'node'){
+	  					for(var i = 0; i < posts.length; i++) { %>
+	  					<div>
 		  					<li class="list-group-item">
 		  						<a href="<%=posts[i].URL%>"><%= posts[i].Title %></a>
 		  					</li>
@@ -22,7 +25,38 @@
 	  				<% }; %>
 	  			</ul>
 	  		</div>
-		</div>
+	  	</div>
+	  			<% } else if(posts.Category == 'ejs') { %>
+	  			<div class="col-md-4"><h2>EJS</h2>
+	  				<div class="content">
+		  				<ul class="list-group">
+		  					<%for(var i = 0; i < posts.length; i++) { %>
+		  					<div>
+			  					<li class="list-group-item">
+			  						<a href="<%=posts[i].URL%>"><%= posts[i].Title %></a>
+			  					</li>
+			  				</div>
+			  				<%};%>
+			  			</ul>
+			  		</div>
+			  	</div>
+
+			  	<% } else if(posts.Category == 'express') { %>
+	  			<div class="col-md-4"><h2>Express</h2>
+	  				<div class="content">
+		  				<ul class="list-group">
+		  					<%for(var i = 0; i < posts.length; i++) { %>
+		  					<div>
+			  					<li class="list-group-item">
+			  						<a href="<%=posts[i].URL%>"><%= posts[i].Title %></a>
+			  					</li>
+			  				</div>
+			  				<% }; } %>
+			  			</ul>
+			  		</div>
+			  	</div>
+
+
 	</div>
 </div>
    <% include ./partials/footer %>

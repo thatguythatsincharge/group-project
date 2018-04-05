@@ -1,9 +1,9 @@
-var express = require( 'express' );
-var mysql = require( 'mysql' );
-var bodyParser = require( 'body-parser' );
-var ejs = require( 'ejs' );
+const express = require( 'express' );
+const mysql = require( 'mysql' );
+const bodyParser = require( 'body-parser' );
+const ejs = require( 'ejs' );
 
-var app = express();
+const app = express();
 
 app.set( 'view engine', 'ejs' );
 app.use( express.static( 'public' ) );
@@ -13,6 +13,7 @@ app.use( bodyParser() );
 // Routes
 app.get( '/', function( req, res ) {
 
+	//make a conection to the server
 	var con = mysql.createConnection( {
 		host: 'localhost',
 		user: 'root',
@@ -20,7 +21,7 @@ app.get( '/', function( req, res ) {
 		database: 'nodemon'
 	} );
 
-
+	//getting all the posts from the table
 	var sql =
 		"SELECT * FROM posttable";
 
@@ -31,17 +32,7 @@ app.get( '/', function( req, res ) {
 		res.render( 'index', {
 			posts: result
 		} );
-		//getting all the posts with category of node
-		// 	console.log(result.Title);
-		// var node = "SELECT * FROM posttable WHERE Category =='node'";
 
-		// 	con.query(node, function(err, result) {
-		// 		if (err) {
-		// 			throw err;
-		// 		}
-
-		// 		console.log(result);
-		// });
 	} );
 } );
 
