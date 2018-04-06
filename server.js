@@ -22,23 +22,43 @@ app.get( '/', function( req, res ) {
 	} );
 
 	//getting all the posts from the table
-	var sql =
-		"SELECT * FROM posttable";
+	var nodeSql =
+		"SELECT * FROM posttable WHERE Category = 'node' ORDER BY id DESC LIMIT 5";
 
-	con.query( sql, function( err, result ) {
+	var expressSql =
+		"SELECT * FROM posttable WHERE Category = 'express' ORDER BY id DESC LIMIT 5";
+
+	var ejsSql =
+		"SELECT * FROM posttable WHERE Category = 'ejs' ORDER BY id DESC LIMIT 5";		
+
+	con.query(nodeSql, function( err, result1 ) {
 		if ( err ) {
 			throw err;
 		}
-		res.render( 'index', {
-			posts: JSON.stringify(result) //hacky solution
-		} );
 
-	} );
+		con.query(expressSql, function( err, result2 ) {
+			if ( err ) {
+				throw err;
+			}
+
+			con.query(ejsSql, function( err, result3 ) {
+				if ( err ) {
+					throw err;
+				}
+
+				res.render('index', { nodePosts: result1, expressPosts: result2, ejsPosts: result3 })
+			});
+		});
+	});
 } );
 
 app.get( '/archive', function( req, res ) {
 	res.render( 'archive' );
 } );
+
+app.get('/newPost', function(req, res) {
+	res.render('newPost');
+});
 
 app.post( '/NodeMon', function( req, res ) {
 	var con = mysql.createConnection( {
@@ -47,6 +67,8 @@ app.post( '/NodeMon', function( req, res ) {
 		password: 'root',
 		database: 'Nodemon'
 	} );
+
+	console.log(req.body);
 
 	var sql =
 		"INSERT INTO posttable (Title, Description, URL, Category, Type) VALUES ('" +
@@ -59,7 +81,7 @@ app.post( '/NodeMon', function( req, res ) {
 		req.body.Category +
 		"','" +
 		req.body.Type +
-		')';
+		"')";
 
 	con.query( sql, function( err, result ) {
 		if ( err ) {
@@ -67,9 +89,7 @@ app.post( '/NodeMon', function( req, res ) {
 		}
 
 		console.log( '1 record inserted' );
-		res.redirect( '/', {
-			inserted: true
-		} );
+		res.redirect( '/');
 	} );
 } );
 
