@@ -1,25 +1,25 @@
-const express = require( 'express' );
-const mysql = require( 'mysql' );
-const bodyParser = require( 'body-parser' );
-const ejs = require( 'ejs' );
+const express = require('express');
+const mysql = require('mysql');
+const bodyParser = require('body-parser');
+const ejs = require('ejs');
 
 const app = express();
 
-app.set( 'view engine', 'ejs' );
-app.use( express.static( 'public' ) );
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
 
-app.use( bodyParser() );
+app.use(bodyParser());
 
 // Routes
-app.get( '/', function( req, res ) {
+app.get('/', function(req, res) {
 
 	//make a conection to the server
-	var con = mysql.createConnection( {
+	var con = mysql.createConnection({
 		host: 'localhost',
 		user: 'root',
 		password: 'root',
 		database: 'nodemon'
-	} );
+	});
 
 	//getting all the posts from the table
 	var nodeSql =
@@ -29,44 +29,48 @@ app.get( '/', function( req, res ) {
 		"SELECT * FROM posttable WHERE Category = 'express' ORDER BY id DESC LIMIT 5";
 
 	var ejsSql =
-		"SELECT * FROM posttable WHERE Category = 'ejs' ORDER BY id DESC LIMIT 5";		
+		"SELECT * FROM posttable WHERE Category = 'ejs' ORDER BY id DESC LIMIT 5";
 
-	con.query(nodeSql, function( err, result1 ) {
-		if ( err ) {
+	con.query(nodeSql, function(err, result1) {
+		if (err) {
 			throw err;
 		}
 
-		con.query(expressSql, function( err, result2 ) {
-			if ( err ) {
+		con.query(expressSql, function(err, result2) {
+			if (err) {
 				throw err;
 			}
 
-			con.query(ejsSql, function( err, result3 ) {
-				if ( err ) {
+			con.query(ejsSql, function(err, result3) {
+				if (err) {
 					throw err;
 				}
 
-				res.render('index', { nodePosts: result1, expressPosts: result2, ejsPosts: result3 })
+				res.render('index', {
+					nodePosts: result1,
+					expressPosts: result2,
+					ejsPosts: result3
+				})
 			});
 		});
 	});
-} );
+});
 
-app.get( '/archive', function( req, res ) {
-	res.render( 'archive' );
-} );
+app.get('/archive', function(req, res) {
+	res.render('archive');
+});
 
 app.get('/newPost', function(req, res) {
 	res.render('newPost');
 });
 
-app.post( '/NodeMon', function( req, res ) {
-	var con = mysql.createConnection( {
+app.post('/NodeMon', function(req, res) {
+	var con = mysql.createConnection({
 		host: 'localhost',
 		user: 'root',
 		password: 'root',
 		database: 'Nodemon'
-	} );
+	});
 
 	console.log(req.body);
 
@@ -83,16 +87,15 @@ app.post( '/NodeMon', function( req, res ) {
 		req.body.Type +
 		"')";
 
-	con.query( sql, function( err, result ) {
-		if ( err ) {
+	con.query(sql, function(err, result) {
+		if (err) {
 			throw err;
 		}
+		console.log('1 record inserted');
+		res.redirect('/');
+	});
+});
 
-		console.log( '1 record inserted' );
-		res.redirect( '/');
-	} );
-} );
-
-app.listen( 3000, function() {
-	console.log( 'The application is running on port 3000' );
-} );
+app.listen(3000, function() {
+	console.log('The application is running on port 3000');
+});

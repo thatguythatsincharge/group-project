@@ -2,14 +2,20 @@ body, html {
     height: 100%;
 }
 
+h2 {
+    background-color: white;
+}
+
+li {
+    border-bottom: 1px solid black;
+}
+
 /* The hero image */
 .hero-image {
     /* The image used */
     background-image: url("../img/nodemon.png");
-
     /* Set a specific height */
     height: 100%;
-
     /* Position and center the image to scale nicely on all screens */
     background-position: center;
     background-repeat: no-repeat;
@@ -24,6 +30,7 @@ body, html {
 }
 
 /* Place text in the middle of the image */
+
 .hero-text {
     text-align: center;
     margin: 2em;
@@ -34,8 +41,8 @@ body, html {
     color: #6fb0e6;
 }
 
-.zeroMargin{
-    margin:0;
+.zeroMargin {
+    margin: 0;
 }
 
 .container {
@@ -51,9 +58,6 @@ body, html {
     text-align: center;
 }
 
-h2 {
-    background-color: white;
-}
 .outline {
     border-radius: 1em;
 }
@@ -71,11 +75,4 @@ h2 {
 .material-icons {
     font-size: 50px;
     color: green;
-    
 }
-
-li {
-    border-bottom: 1px solid black;
-}
-
-
