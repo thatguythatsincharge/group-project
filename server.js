@@ -30,7 +30,7 @@ app.get( '/', function( req, res ) {
 			throw err;
 		}
 		res.render( 'index', {
-			posts: result
+			posts: JSON.stringify(result) //hacky solution
 		} );
 
 	} );
