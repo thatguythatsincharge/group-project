@@ -31,6 +31,9 @@ app.get('/', function(req, res) {
 	var ejsSql =
 		"SELECT * FROM posttable WHERE Category = 'ejs' ORDER BY id DESC LIMIT 5";
 
+	var Sql =
+		"SELECT * FROM posttable";
+
 	con.query(nodeSql, function(err, result1) {
 		if (err) {
 			throw err;
@@ -46,11 +49,19 @@ app.get('/', function(req, res) {
 					throw err;
 				}
 
-				res.render('index', {
-					nodePosts: result1,
-					expressPosts: result2,
-					ejsPosts: result3
-				})
+				con.query(Sql, function(err, result4) {
+					if (err) {
+						throw err;
+					}
+
+					res.render('index', {
+						nodePosts: result1,
+						expressPosts: result2,
+						ejsPosts: result3,
+						Posts: result4
+					});
+					console.log(result4);
+				});
 			});
 		});
 	});
@@ -62,6 +73,18 @@ app.get('/archive', function(req, res) {
 
 app.get('/newPost', function(req, res) {
 	res.render('newPost');
+});
+
+app.get('/nodeArch', function(req, res) {
+	res.render('nodeArch');
+});
+
+app.get('/expressArch', function(req, res) {
+	res.render('expressArch');
+});
+
+app.get('/ejsArch', function(req, res) {
+	res.render('ejsArch');
 });
 
 app.post('/NodeMon', function(req, res) {
