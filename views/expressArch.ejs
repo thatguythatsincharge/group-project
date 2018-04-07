@@ -14,16 +14,20 @@
 
   </head>
   <body>
-
-
-    <div class="container">
-        <div class="row"><h1>Node Archive</h1>
-          	<%for(i = 1; i < Posts.length; i++) {%>
+    <div class="container center">
+        <div class="col-md-6 offsett-md-3">
+            <img class="imgMargin" src="/img/express.jpg">
+            <h1>
+                Express JS Archive
+            </h1>
+          	<%for(var i = 0; i < Posts.length; i++) {%>
           		<ul class="list-group">
           			<% if(Posts[i].Category == 'express') {%>
           				<div>
           					<li class="list-group-item">
-          						<a href="<%=Posts[i].URL %>" target="_blank"><%=Posts[i].Title %></a>
+          						<a href="<%=Posts[i].URL %>" target="_blank">
+                                    <%=Posts[i].Title %>
+                                </a>
           					</li>
             			</div>
           			<% } %>

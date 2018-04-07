@@ -4,15 +4,21 @@
 
 <div class="container">
 	<div class="row">
-
-		<div class="col-md-4"><img class="imgMargin" src="img/jslogo.png"><h2>NodeJS</h2>
+		<div class="col-md-4">
+			<a href="/nodeArch">
+				<img class="imgMargin" src="img/jslogo.png">
+			</a>
+			<h2>
+				NodeJS
+			</h2>
 	  		<div class="content">
 	  			<ul class="list-group">
-
 	  				<% for(var i = 0; i < nodePosts.length; i++) { %>
 	  					<div>
 		  					<li class="list-group-item">
-		  						<a href="<%= nodePosts[i].URL %>" target="_blank"><%= nodePosts[i].Title %></a>
+		  						<a href="<%= nodePosts[i].URL %>" target="_blank">
+		  							<%= nodePosts[i].Title %>
+		  						</a>
 		  					</li>
 		  				</div>
 	  				<% }; %>
@@ -21,57 +27,70 @@
 	  						<a href="/nodeArch">Node Archive</a>
 	  					</li>
 	  				</div>
-	  				
 	  			</ul>
 	  		</div>
 	  	</div>
-	  	<div class="col-md-4"><img src="img/express.jpg" class="imgMargin"><h2>Express</h2>
+	  	<div class="col-md-4">
+	  		<a href="/expressArch">
+	  			<img src="img/express.jpg" class="imgMargin">
+	  		</a>
+	  		<h2>
+	  			Express
+	  		</h2>
 	  		<div class="content ">
 	  			<ul class="list-group">
-
 	  				<% for(var i = 0; i < expressPosts.length; i++) { %>
 	  					<div>
 		  					<li class="list-group-item">
-		  						<a href="<%= expressPosts[i].URL %>" target="_blank"><%= expressPosts[i].Title %></a>
+		  						<a href="<%= expressPosts[i].URL %>" target="_blank">
+		  							<%= expressPosts[i].Title %>
+		  						</a>
 		  					</li>
 		  				</div>
 	  				<% }; %>
 	  				<div>
 	  					<li class="list-group-item">
-	  						<a href="/expressArch">Express Archive</a>
+	  						<a href="/expressArch">
+	  							Express Archive
+	  						</a>
 	  					</li>
 	  				</div>
-
 	  			</ul>
 	  		</div>
 	  	</div>
-	  	<div class="col-md-4"><img src="img/ejs.jpg" class="imgMargin"><h2>EJS</h2>
+	  	<div class="col-md-4">
+	  		<a href="/ejsArch">
+	  			<img src="img/ejs.jpg" class="imgMargin">
+	  		</a>
+	  		<h2>
+	  			EJS
+	  		</h2>
 	  		<div class="content ">
 	  			<ul class="list-group">
-
 	  				<% for(var i = 0; i < ejsPosts.length; i++) { %>
 	  					<div>
 		  					<li class="list-group-item">
-		  						<a href="<%= ejsPosts[i].URL %>" target="_blank"><%= ejsPosts[i].Title %></a>
+		  						<a href="<%= ejsPosts[i].URL %>" target="_blank">
+		  							<%= ejsPosts[i].Title %>
+		  						</a>
 		  					</li>
 		  				</div>
 	  				<% }; %>
 	  				<div>
 	  					<li class="list-group-item">
-	  						<a href="/ejsArch">EJS Archive</a>
+	  						<a href="/ejsArch">
+		  						EJS Archive
+		  					</a>
 	  					</li>
 	  				</div>
-
 	  			</ul>
 	  		</div>
 	  	</div>
-
 	  	<div class='col-md-12'>
 	  		<a href="/newPost">
 	  			<button class="btn btn-primary">Create New Post</button>
 	  		</a>
 	  	</div>	  	
-
 	</div>
 </div>
    <% include ./partials/footer %>

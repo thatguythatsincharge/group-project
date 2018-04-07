@@ -60,7 +60,6 @@ app.get('/', function(req, res) {
 						ejsPosts: result3,
 						Posts: result4
 					});
-					console.log(result4);
 				});
 			});
 		});
@@ -76,15 +75,75 @@ app.get('/newPost', function(req, res) {
 });
 
 app.get('/nodeArch', function(req, res) {
-	res.render('nodeArch');
+	
+	//make a conection to the server
+	var con = mysql.createConnection({
+		host: 'localhost',
+		user: 'root',
+		password: 'root',
+		database: 'nodemon'
+	});
+
+	var Sql =
+		"SELECT * FROM posttable";
+
+		con.query(Sql, function(err, result) {
+					if (err) {
+						throw err;
+					}
+
+					res.render('nodeArch', {
+						Posts: result
+					});
+	});
 });
 
 app.get('/expressArch', function(req, res) {
-	res.render('expressArch');
+	
+	//make a conection to the server
+	var con = mysql.createConnection({
+		host: 'localhost',
+		user: 'root',
+		password: 'root',
+		database: 'nodemon'
+	});
+
+	var Sql =
+		"SELECT * FROM posttable";
+
+		con.query(Sql, function(err, result) {
+					if (err) {
+						throw err;
+					}
+
+					res.render('expressArch', {
+						Posts: result
+					});
+	});
 });
 
 app.get('/ejsArch', function(req, res) {
-	res.render('ejsArch');
+	
+	//make a conection to the server
+	var con = mysql.createConnection({
+		host: 'localhost',
+		user: 'root',
+		password: 'root',
+		database: 'nodemon'
+	});
+
+	var Sql =
+		"SELECT * FROM posttable";
+
+		con.query(Sql, function(err, result) {
+					if (err) {
+						throw err;
+					}
+
+					res.render('ejsArch', {
+						Posts: result
+					});
+	});
 });
 
 app.post('/NodeMon', function(req, res) {
@@ -94,8 +153,6 @@ app.post('/NodeMon', function(req, res) {
 		password: 'root',
 		database: 'Nodemon'
 	});
-
-	console.log(req.body);
 
 	var sql =
 		"INSERT INTO posttable (Title, Description, URL, Category, Type) VALUES ('" +

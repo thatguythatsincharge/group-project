@@ -1,16 +1,18 @@
-body, html {
+body,
+html {
     height: 100%;
 }
-
 h2 {
     background-color: white;
 }
-
 li {
     border-bottom: 1px solid black;
 }
-
+a:hover {
+    text-decoration: none;
+}
 /* The hero image */
+
 .hero-image {
     /* The image used */
     background-image: url("../img/nodemon.png");
@@ -23,12 +25,10 @@ li {
     position: relative;
     margin-bottom: 2em;
 }
-
 .imgMargin {
     margin: 2em;
     height: 106px;
 }
-
 /* Place text in the middle of the image */
 
 .hero-text {
@@ -40,39 +40,37 @@ li {
     font-weight: bold;
     color: #6fb0e6;
 }
-
 .zeroMargin {
     margin: 0;
 }
-
 .container {
     padding-bottom: 5em;
     padding-top: 3em;
 }
-
 .content {
     margin-bottom: 4em;
 }
-
 .row {
     text-align: center;
 }
-
 .outline {
     border-radius: 1em;
 }
-
 .list-group-item {
     cursor: pointer;
 }
-
 .list-group-item:hover {
     color: #fff;
     background-color: #FFFFFF;
     border-color: #007bff;
 }
-
 .material-icons {
     font-size: 50px;
     color: green;
+}
+.center {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
