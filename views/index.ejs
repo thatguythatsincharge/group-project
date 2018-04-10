@@ -17,6 +17,13 @@
 	  					<div>
 		  					<li class="list-group-item">
 		  						<a href="<%= nodePosts[i].URL %>" target="_blank">
+		  							<% if(nodePosts[i].Type == "video") { %>
+		  								<i class="fab fa-youtube"></i>
+		  							<% } else if(nodePosts[i].Type == "article") { %>	
+		  								<i class="far fa-newspaper"></i>
+		  							<% } else {%>
+		  								<i class="far fa-question-circle"></i>
+		  							<% } %>
 		  							<%= nodePosts[i].Title %>
 		  						</a>
 		  					</li>
@@ -24,7 +31,7 @@
 	  				<% }; %>
 	  				<div>
 	  					<li class="list-group-item">
-	  						<a href="/nodeArch">Node Archive</a>
+	  						<a href="/nodeArch"><i class="fas fa-list-ul"></i> Node Archive</a>
 	  					</li>
 	  				</div>
 	  			</ul>
@@ -43,6 +50,13 @@
 	  					<div>
 		  					<li class="list-group-item">
 		  						<a href="<%= expressPosts[i].URL %>" target="_blank">
+		  							<% if(expressPosts[i].Type == "video") { %>
+		  								<i class="fab fa-youtube"></i>
+		  							<% } else if(expressPosts[i].Type == "article") { %>	
+		  								<i class="far fa-newspaper"></i>
+		  							<% } else {%>
+		  								<i class="far fa-question-circle"></i>
+		  							<% } %>
 		  							<%= expressPosts[i].Title %>
 		  						</a>
 		  					</li>
@@ -51,7 +65,7 @@
 	  				<div>
 	  					<li class="list-group-item">
 	  						<a href="/expressArch">
-	  							Express Archive
+	  							<i class="fas fa-list-ul"></i> Express Archive
 	  						</a>
 	  					</li>
 	  				</div>
@@ -71,6 +85,13 @@
 	  					<div>
 		  					<li class="list-group-item">
 		  						<a href="<%= ejsPosts[i].URL %>" target="_blank">
+		  							<% if(ejsPosts[i].Type == "video") { %>
+		  								<i class="fab fa-youtube"></i>
+		  							<% } else if(ejsPosts[i].Type == "article") { %>	
+		  								<i class="far fa-newspaper"></i>
+		  							<% } else {%>
+		  								<i class="far fa-question-circle"></i>
+		  							<% } %>
 		  							<%= ejsPosts[i].Title %>
 		  						</a>
 		  					</li>
@@ -79,7 +100,7 @@
 	  				<div>
 	  					<li class="list-group-item">
 	  						<a href="/ejsArch">
-		  						EJS Archive
+		  						<i class="fas fa-list-ul"></i> EJS Archive
 		  					</a>
 	  					</li>
 	  				</div>

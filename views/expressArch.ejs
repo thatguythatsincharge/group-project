@@ -10,6 +10,8 @@
 
         <link rel="stylesheet" type="text/css" href="css/styles.css">
 
+        <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+
     	   <title>Express Archive</title>
 
   </head>
@@ -20,17 +22,25 @@
             <h1>
                 Express JS Archive
             </h1>
-          	<%for(var i = 0; i < Posts.length; i++) {%>
+          	<%for(var i = 0; i < expressPosts.length; i++) {%>
           		<ul class="list-group">
-          			<% if(Posts[i].Category == 'express') {%>
+          			
           				<div>
           					<li class="list-group-item">
-          						<a href="<%=Posts[i].URL %>" target="_blank">
-                                    <%=Posts[i].Title %>
+
+          						<a href="<%=expressPosts[i].URL %>" target="_blank">
+                        <% if(expressPosts[i].Type == "video") { %>
+                          <i class="fab fa-youtube"></i>
+                        <% } else if(expressPosts[i].Type == "article") { %>  
+                          <i class="far fa-newspaper"></i>
+                        <% } else { %>
+                          <i class="far fa-question-circle"></i>
+                      <% } %>
+                                    <%=expressPosts[i].Title %>
                                 </a>
           					</li>
             			</div>
-          			<% } %>
+          		
           		</ul>
           	<% } %>
         </div>

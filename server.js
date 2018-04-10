@@ -10,10 +10,7 @@ app.use(express.static('public'));
 
 app.use(bodyParser());
 
-// Routes
-app.get('/', function(req, res) {
-
-	//make a conection to the server
+//make a conection to the server
 	var con = mysql.createConnection({
 		host: 'localhost',
 		user: 'root',
@@ -23,33 +20,50 @@ app.get('/', function(req, res) {
 
 	//getting all the posts from the table
 	var nodeSql =
-		"SELECT * FROM posttable WHERE Category = 'node' ORDER BY id DESC LIMIT 5";
+		"SELECT * FROM posttable WHERE Category = 'node' ORDER BY id DESC";
 
 	var expressSql =
-		"SELECT * FROM posttable WHERE Category = 'express' ORDER BY id DESC LIMIT 5";
+		"SELECT * FROM posttable WHERE Category = 'express' ORDER BY id DESC";
 
 	var ejsSql =
-		"SELECT * FROM posttable WHERE Category = 'ejs' ORDER BY id DESC LIMIT 5";
+		"SELECT * FROM posttable WHERE Category = 'ejs' ORDER BY id DESC";
 
 	var Sql =
 		"SELECT * FROM posttable";
 
-	con.query(nodeSql, function(err, result1) {
+
+
+// Routes
+app.get('/', function(req, res) {
+
+	var nodeSq =
+		"SELECT * FROM posttable WHERE Category = 'node' ORDER BY id DESC LIMIT 5";
+
+	var expressSq =
+		"SELECT * FROM posttable WHERE Category = 'express' ORDER BY id DESC LIMIT 5";
+
+	var ejsSq =
+		"SELECT * FROM posttable WHERE Category = 'ejs' ORDER BY id DESC LIMIT 5";
+
+	var Sq =
+		"SELECT * FROM posttable";
+
+	con.query(nodeSq, function(err, result1) {
 		if (err) {
 			throw err;
 		}
 
-		con.query(expressSql, function(err, result2) {
+		con.query(expressSq, function(err, result2) {
 			if (err) {
 				throw err;
 			}
 
-			con.query(ejsSql, function(err, result3) {
+			con.query(ejsSq, function(err, result3) {
 				if (err) {
 					throw err;
 				}
 
-				con.query(Sql, function(err, result4) {
+				con.query(Sq, function(err, result4) {
 					if (err) {
 						throw err;
 					}
@@ -66,84 +80,47 @@ app.get('/', function(req, res) {
 	});
 });
 
-app.get('/archive', function(req, res) {
-	res.render('archive');
-});
 
-app.get('/newPost', function(req, res) {
-	res.render('newPost');
-});
 
 app.get('/nodeArch', function(req, res) {
+
+	con.query(nodeSql, function(err, result) {
+		if (err) {
+			throw err;
+		}
+
+		res.render('nodeArch', {nodePosts: result})
 	
-	//make a conection to the server
-	var con = mysql.createConnection({
-		host: 'localhost',
-		user: 'root',
-		password: 'root',
-		database: 'nodemon'
-	});
-
-	var Sql =
-		"SELECT * FROM posttable";
-
-		con.query(Sql, function(err, result) {
-					if (err) {
-						throw err;
-					}
-
-					res.render('nodeArch', {
-						Posts: result
-					});
 	});
 });
 
 app.get('/expressArch', function(req, res) {
+
+	con.query(expressSql, function(err, result) {
+		if (err) {
+			throw err;
+		}
+
+		res.render('expressArch', {expressPosts: result})
 	
-	//make a conection to the server
-	var con = mysql.createConnection({
-		host: 'localhost',
-		user: 'root',
-		password: 'root',
-		database: 'nodemon'
-	});
-
-	var Sql =
-		"SELECT * FROM posttable";
-
-		con.query(Sql, function(err, result) {
-					if (err) {
-						throw err;
-					}
-
-					res.render('expressArch', {
-						Posts: result
-					});
 	});
 });
 
+
 app.get('/ejsArch', function(req, res) {
 	
-	//make a conection to the server
-	var con = mysql.createConnection({
-		host: 'localhost',
-		user: 'root',
-		password: 'root',
-		database: 'nodemon'
+	con.query(ejsSql, function(err, result) {
+		if (err) {
+			throw err;
+		}
+
+		res.render('ejsArch', {ejsPosts: result})
+	
 	});
+});
 
-	var Sql =
-		"SELECT * FROM posttable";
-
-		con.query(Sql, function(err, result) {
-					if (err) {
-						throw err;
-					}
-
-					res.render('ejsArch', {
-						Posts: result
-					});
-	});
+app.get('/newPost', function(req, res) {
+	res.render('newPost');
 });
 
 app.post('/NodeMon', function(req, res) {
